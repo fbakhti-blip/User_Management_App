@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox as msg
 
+# TODO making sure database path is always found! ;-(((
 # import sys
 # sys.path.append("C:\\Users\farzi\Downloads\User_Management_App")
 
