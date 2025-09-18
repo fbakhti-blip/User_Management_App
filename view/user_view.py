@@ -4,8 +4,8 @@ import tkinter.messagebox as msg
 # import sys
 # sys.path.append("C:\\Users\farzi\Downloads\User_Management_App")
 
-from user_app.tools.validation import *
-from user_app.data_access.database_manager import save_user
+from tools.validation import *
+from data_access.database_manager import save_user
 
 
 def save_click():
