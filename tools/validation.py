@@ -5,21 +5,21 @@ def username_validator(username):
     if re.match(r"^[a-zA-Z\d]{10,20}$", username):
         return username
     else:
-        raise ValueError("Invalid Username !!!")
+        raise ValueError("Invalid Username !!!" , "فقط 10 تا 20 کاراکتر حروف و اعداد")
 
 
 def password_validator(password):
     if re.match(r"^[a-zA-Z\d$@#]{8,14}$", password):
         return password
     else:
-        raise ValueError("Invalid Password !!!")
+        raise ValueError("Invalid Password !!!" , "فقط 8 تا 14 کاراکتر بدون فاصله")
 
 
 def nickname_validator(nickname):
     if re.match(r"^[a-zA-Z\s\d]{3,30}$", nickname):
         return nickname
     else:
-        raise ValueError("Invalid Nickname !!!")
+        raise ValueError("Invalid Nickname !!!" , "فقط 3 تا 30 کاراکتر حروف و اعداد و فاصله")
 
 
 def username_repeat_validator(username):

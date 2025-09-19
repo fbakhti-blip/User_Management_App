@@ -25,6 +25,7 @@ nickname = input("Enter nickname: ")
 connection = sqlite3.connect("user_db.db")
 cursor = connection.cursor()
 user_list = cursor.execute("select * from users").fetchall()
+connection.close()
 for usr in user_list:
     if username == usr[1]:
         raise ValueError("Username Already Taken !!!")
