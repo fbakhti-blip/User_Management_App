@@ -20,9 +20,14 @@ def save_user(username,password,nickname,locked_status):
     connection.commit()
     connection.close()
 
-
-connection = sqlite3.connect('user_db.db')
-cursor = connection.cursor()
-user_list = cursor.execute("select * from users").fetchall()
-connection.close()
+def user_list():
+    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
+    cursor = connection.cursor()
+    users_list = cursor.execute("select * from users").fetchall()
+    connection.close()
+    return users_list
+# connection = sqlite3.connect('user_db.db')
+# cursor = connection.cursor()
+# user_list = cursor.execute("select * from users").fetchall()
+# connection.close()
 # print(user_list)

@@ -1,5 +1,5 @@
 import re
-from data_access.database_manager import user_list
+import sqlite3
 
 def username_validator(username):
     if re.match(r"^[a-zA-Z\d]{10,20}$", username):
@@ -23,7 +23,11 @@ def nickname_validator(nickname):
 
 
 def username_repeat_validator(username):
-    for usr in user_list:
+    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
+    cursor = connection.cursor()
+    users_list = cursor.execute("select * from users").fetchall()
+    connection.close()
+    for usr in users_list:
         if  username == usr[1]:
             raise ValueError("Username Already Taken !!!")
         else:
@@ -31,7 +35,11 @@ def username_repeat_validator(username):
 
 
 def nickname_repeat_validator(nickname):
-    for usr in user_list:
+    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
+    cursor = connection.cursor()
+    users_list = cursor.execute("select * from users").fetchall()
+    connection.close()
+    for usr in users_list:
         if  nickname == usr[3]:
             raise ValueError("Nickname Already Taken !!!")
         else:
