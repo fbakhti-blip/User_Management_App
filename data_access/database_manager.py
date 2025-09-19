@@ -2,7 +2,7 @@ import sqlite3
 
 
 def create_table_user():
-    connection = sqlite3.connect("data_access/user_db.db")
+    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
     cursor = connection.cursor()
     tables_list = cursor.execute(
         "select name from sqlite_master where type='table' and name='users'").fetchall()
@@ -13,9 +13,16 @@ def create_table_user():
 
 
 def save_user(username,password,nickname,locked_status):
-    connection = sqlite3.connect("data_access/user_db.db")
+    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
     cursor = connection.cursor()
     cursor.execute("insert into users (username , password , nickname , locked) values(?,?,?,?)",
                    [username,password,nickname,locked_status])
     connection.commit()
     connection.close()
+
+
+connection = sqlite3.connect('user_db.db')
+cursor = connection.cursor()
+user_list = cursor.execute("select * from users").fetchall()
+connection.close()
+# print(user_list)
