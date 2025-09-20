@@ -1,5 +1,6 @@
 import re
 import sqlite3
+from data_access.database_manager import *
 
 def username_validator(username):
     if re.match(r"^[a-zA-Z\d]{10,20}$", username):
@@ -22,25 +23,15 @@ def nickname_validator(nickname):
         raise ValueError("Invalid Nickname !!!" , "فقط 3 تا 30 کاراکتر حروف و اعداد و فاصله")
 
 
-# TODO optimise repeat validation: 2-in-1? / Search table once?
-
 def username_repeat_validator(username):
-    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
-    cursor = connection.cursor()
-    users_list = cursor.execute("select * from users").fetchall()
-    connection.close()
-    for usr in users_list:
-        if  username == usr[1]:
-            raise ValueError("Username Already Taken !!!")
-        else:
-            return username
+    if find_user_by_username(username):
+        raise ValueError("Username Already Taken !!!")
+    else:
+        return username
 
 
 def nickname_repeat_validator(nickname):
-    connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
-    cursor = connection.cursor()
-    users_list = cursor.execute("select * from users").fetchall()
-    connection.close()
+
     for usr in users_list:
         if  nickname == usr[3]:
             raise ValueError("Nickname Already Taken !!!")
