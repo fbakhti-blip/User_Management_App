@@ -22,6 +22,8 @@ def nickname_validator(nickname):
         raise ValueError("Invalid Nickname !!!" , "فقط 3 تا 30 کاراکتر حروف و اعداد و فاصله")
 
 
+# TODO optimise repeat validation: 2-in-1? / Search table once?
+
 def username_repeat_validator(username):
     connection = sqlite3.connect("User_Management_App.data_access.user_db.db")
     cursor = connection.cursor()
